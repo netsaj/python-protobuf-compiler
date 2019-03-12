@@ -1,3 +1,2 @@
 grpcio==1.18.0
 grpcio-tools==1.18.0
-bumpversion==0.5.3
