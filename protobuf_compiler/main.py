@@ -13,11 +13,11 @@ def main():
         description='compile all protobuf files and create a single package distribution for can be installed with pip'
     )
     parser.add_argument("-d", "--dir", dest="origin",
-                        help="folder path where the .proto files are located", metavar="FILE", default=os.getcwd())
+                        help="folder path where the .proto files are located", metavar="PROTO_DIR", default=os.getcwd())
     parser.add_argument("-p", "--package", dest="package", default="protobuf",
-                        help="package name", metavar="FILE")
+                        help="package name", metavar="PACKAGE_NAME")
     parser.add_argument("-o", "--output", dest="output", default=".",
-                        help="output folder for save single package .tar.gz", metavar="FILE")
+                        help="output folder for save single package .tar.gz", metavar="OUTPUT_DIR")
     args = parser.parse_args()
     if args.help:
         parser.print_help()
