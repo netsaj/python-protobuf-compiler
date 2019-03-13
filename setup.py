@@ -1,6 +1,7 @@
 import pathlib
 from setuptools import setup
 
+
 # The directory containing this file
 HERE = pathlib.Path(__file__).parent
 
@@ -9,7 +10,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name='protobuf_compiler',
-    version='1.0.3',
+    version='1.0.7',
     packages=['protobuf_compiler'],
     url='https://github.com/netsaj/python-protobuf-compiler',
     license='MIT',
@@ -26,11 +27,11 @@ setup(
         'grpcio==1.18.0',
         'grpcio-tools==1.18.0'
     ],
-    script='protopy',
     entry_points={
         'console_scripts': [
             'protopy = protobuf_compiler.main:main',
-        ]
-    }
-
+            'protobuf-compiler = protobuf_compiler.main:main',
+        ],
+    },
+    scripts=['protopy.py', 'protobuf-compiler.py']
 )
