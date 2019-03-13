@@ -6,6 +6,7 @@ installed with pip
 ## requirements
 
 * python >= 3.6
+* git (only for build from git repository)
 
 ## features
 - [x] support for multiples folders
@@ -78,11 +79,6 @@ pip3 install /Users/netsaj/temp/mytest-1.0.0.tar.gz
 ```python
 from mytest.analytics import analytics_pb2
 ```
-
-
-## features
- support for single proto
-[ ]
 
 ## Authors
 

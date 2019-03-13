@@ -1,7 +1,6 @@
 import pathlib
 from setuptools import setup
 
-
 # The directory containing this file
 HERE = pathlib.Path(__file__).parent
 
@@ -10,11 +9,12 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name='protobuf_compiler',
-    version='1.0.7',
+    version='1.0.10',
     packages=['protobuf_compiler'],
     url='https://github.com/netsaj/python-protobuf-compiler',
     license='MIT',
     long_description=README,
+    long_description_content_type='text/markdown',
     author='Fabio Moreno',
     author_email='fabiomoreno@outlook.com',
     description='compile all protobuf files and create a single package distribution for can be installed with pip',
