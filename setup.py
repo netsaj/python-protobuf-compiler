@@ -24,12 +24,13 @@ setup(
     ],
     install_requires=[
         'grpcio==1.18.0',
-        'grpcio-tools==1.18.0',
+        'grpcio-tools==1.18.0'
     ],
+    script='protopy',
     entry_points={
         'console_scripts': [
             'protopy = protobuf_compiler.main:main',
-        ],
-    },
-    scripts='protopy'
+        ]
+    }
+
 )
