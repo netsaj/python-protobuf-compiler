@@ -7,6 +7,14 @@ installed with pip
 
 * python >= 3.6
 
+## features
+- [x] support for multiples folders
+- [x] support multiples proto files
+- [x] Create self package for pip
+- [x] Support for build from github and gitlab repository
+- [X] Support for build from local directory
+- [ ] support imports into proto file (sometimes fails)
+
 ## install
 
 ```bash
@@ -70,6 +78,11 @@ pip3 install /Users/netsaj/temp/mytest-1.0.0.tar.gz
 ```python
 from mytest.analytics import analytics_pb2
 ```
+
+
+## features
+ support for single proto
+[ ]
 
 ## Authors
 
