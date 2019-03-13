@@ -9,7 +9,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name='protobuf_compiler',
-    version='1.0.10',
+    version='1.0.11',
     packages=['protobuf_compiler'],
     url='https://github.com/netsaj/python-protobuf-compiler',
     license='MIT',
@@ -25,7 +25,10 @@ setup(
     ],
     install_requires=[
         'grpcio==1.18.0',
-        'grpcio-tools==1.18.0'
+        'grpcio-tools==1.18.0',
+        'colorama==0.3.3',
+        'termcolor==1.1.0',
+        'tqdm==4.31.1'
     ],
     entry_points={
         'console_scripts': [

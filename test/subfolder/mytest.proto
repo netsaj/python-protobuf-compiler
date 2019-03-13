@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+
+package testpackage;
+
+//the import start in the proto files root folder
+import "test/subfolder/other.proto";
+
+
+message Testing1{
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    repeated Testing2 testing2 = 4;
+
+}
+
+message ResponseTest{
+    string status = 1;
+    int32 code = 2;
+}
+
+
+service TestService {
+    rpc AddTest (Testing1) returns (ResponseTest);
+}

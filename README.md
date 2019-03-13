@@ -14,7 +14,7 @@ installed with pip
 - [x] Create self package for pip
 - [x] Support for build from github and gitlab repository
 - [X] Support for build from local directory
-- [ ] support imports into proto file (sometimes fails)
+- [X] support imports into proto file (see test folder for show example )
 
 ## install
 

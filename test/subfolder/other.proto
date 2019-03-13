@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+
+package testpackage;
+
+
+
+message Testing2{
+    string comment = 1;
+    string description = 2;
+}
