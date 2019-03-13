@@ -3,12 +3,40 @@
 compile all protobuf files and create a single package distribution for can be
 installed with pip
 
+## requirements
 
-## usage: 
+* python >= 3.6
 
+## install
+
+```bash
+pip3 install protobuf-compiler
+```
+
+for check install, execute in your terminal:
+
+```bash
+protopy -h
+```
+
+##  arguments
+
+* -h, --help : show this help message and exit
+* -d PROTO_DIR, --dir PROTO_DIR : folder path where the .proto files are located
+* -p PACKAGE_NAME, --package PACKAGE_NAME : package name
+* -o OUTPUT_DIR, --output OUTPUT_DIR: output folder for save single package .tar.gz
+* -g URL, --git URL : git reopsitory url where the .proto files are located
+* -t TOKEN, --token TOKEN : git server api token
+* -v VERSION, --version VERSION : tag version for build pacakge
+
+
+## usage
+
+```bash
 protopy [-h] [-d PROTO_DIR] [-p PACKAGE_NAME] [-o OUTPUT_DIR]
+```
 
-### example:
+### example
 
 * compile from git repository:
 
@@ -23,19 +51,26 @@ python3 -m protopy -o /my/target/dir -p testpackage -g https://github.com/netsaj
 python3 -m protopy -o /my/output/dir -p testpackage -d /my/protofile/source/dir 
 ```
 
+## install generate package in your app
 
-##  arguments:
+run in your app folder:
 
-* -h, --help : show this help message and exit
-* -d PROTO_DIR, --dir PROTO_DIR : folder path where the .proto files are located
-* -p PACKAGE_NAME, --package PACKAGE_NAME : package name
-* -o OUTPUT_DIR, --output OUTPUT_DIR: output folder for save single package .tar.gz
-* -g URL, --git URL : git reopsitory url where the .proto files are located
-* -t TOKEN, --token TOKEN : git server api token
-* -v VERSION, --version VERSION : tag version for build pacakge
+```bash
+pip3 install /my/output/dir/package-version.tar.gz
+```
 
+### example:
+* installing generate package:
+```bash
+pip3 install /Users/netsaj/temp/mytest-1.0.0.tar.gz
+```
 
+* import into you .py files:
 
-## Authors:
+```python
+from mytest.analytics import analytics_pb2
+```
+
+## Authors
 
 * Fabio Moreno <fabiomoreno@outlook.com>

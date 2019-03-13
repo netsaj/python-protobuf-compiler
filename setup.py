@@ -1,5 +1,6 @@
 import pathlib
 from setuptools import setup
+from setuptools.command.install import install
 
 
 # The directory containing this file
@@ -10,7 +11,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name='protobuf_compiler',
-    version='1.0.0',
+    version='1.0.2',
     packages=['protobuf_compiler'],
     url='https://github.com/netsaj/python-protobuf-compiler',
     license='MIT',
@@ -32,4 +33,5 @@ classifiers=[
             'protopy = protobuf_compiler.main:main',
         ],
     },
+    scripts='protopy'
 )
