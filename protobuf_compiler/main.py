@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # app version
-__version__ = "1.0.15"  # type: str
+__version__ = "1.0.18"  # type: str
 
 import os
 import shutil
