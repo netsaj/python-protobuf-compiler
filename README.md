@@ -36,7 +36,7 @@ protopy -h
 * -o OUTPUT_DIR, --output OUTPUT_DIR: output folder for save single package .tar.gz
 * -g URL, --git URL : git reopsitory url where the .proto files are located
 * -t TOKEN, --token TOKEN : git server api token
-* -v VERSION, --version VERSION : tag version for build pacakge
+* -v VERSION, --version VERSION : tag version for build package
 
 
 ## usage

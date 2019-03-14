@@ -1,29 +1,30 @@
 import os
 from protobuf_compiler.input_folder import define_input
-def args_validation(args):
-    """
-    validate input args
-    :param args: command line args
-    :type args: argparse.Namespace
-    :return:
-    """
 
+
+def args_validation(
+        git_repository='',
+        proto_input_dir='.',
+        proto_output_dir='.',
+        proto_package_version='',
+        git_repository_token=''
+):
     # repository defined
-    if args.repository != '':
-        if not str(args.repository).startswith("https://") and not str(args.repository).startswith("http://"):
+    if git_repository != '':
+        if not str(git_repository).startswith("https://") and not str(git_repository).startswith("http://"):
             raise ValueError("-g , --git  : copy clone with https. example: https://gitlab.com/netsaj/test-repo.git")
-        if str(args.repository).find("gitlab") == -1 and str(args.repository).find("github") == -1:
+        if str(git_repository).find("gitlab") == -1 and str(git_repository).find("github") == -1:
             raise ValueError("-g , --git  : git repository support for gitlab and github")
 
-    if args.origin == args.output:
+    if proto_input_dir == proto_output_dir:
         raise ValueError("src(-d) proto path need be different to output(-o) path ")
 
-    if args.package == '':
+    if proto_package_version == '':
         raise ValueError("package name can't empty")
 
-    if args.repository == '':
-        input = define_input(args)
-        contain_proto=False
+    if git_repository == '':
+        input = define_input(proto_input_dir, git_repository, git_repository_token)
+        contain_proto = False
         for file in get_list_of_files(input):
             if file.lower().endswith(".proto"):
                 contain_proto = True

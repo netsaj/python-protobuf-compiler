@@ -3,5 +3,5 @@
 
 """femr.__main__: executed when femr directory is called as script."""
 
-from .femr import main
+from protobuf_compiler.main import main
 main()
