@@ -19,7 +19,12 @@ from protobuf_compiler.args_validation import args_validation
 # global vars
 packages = [];
 packages_no_added = set()
-
+package_name = ''
+package_version = ''
+input_dir = ''
+output_dir = ''
+git_repository = ''
+git_repository_token = ''
 
 def main():
     """
@@ -56,12 +61,7 @@ def main():
                         -t=PROTO_GIT_REPO_TOKEN \
                         -v=PROTO_PACKAGE_VERSION \
                         -p=PROTO_PACKAGE_NAME)", metavar="true")
-    package_name = ''
-    package_version = ''
-    input_dir = ''
-    output_dir = ''
-    git_repository = ''
-    git_repository_token = ''
+
 
     args = parser.parse_args()
     if args.envars is not None and str().lower() == "true":
@@ -92,28 +92,30 @@ def main():
                     git_repository_token=git_repository_token)
 
     errors = 0
-    for root, dir, files in os.walk(input_dir):
-        # if os.path.isdir(os.path.join(input_dir, folder)):
-        for file in os.listdir(root):
-            if file.lower().endswith(".proto"):
-                folder = root.replace(input_dir + os.path.sep, "")
-
-                command = "python3 -m grpc_tools.protoc -I. \
-                         --proto_path=" + input_dir + " \
-                         --python_out=" + os.path.join(output_dir, package_name, package_name) + " \
-                         --grpc_python_out=" + os.path.join(output_dir, package_name, package_name) + " \
-                        " + os.path.join(root, file)
-                os.system("touch __init__.py")
-                out = os.system(command)
-                if out == 0:
-                    packages.append(package_name + "." + folder.replace(os.path.sep, ".").replace("-", "_"))
-                    asd = os.path.join(output_dir, package_name, package_name, folder.replace("-", "_"),
-                                       "__init__.py")
-                    os.system("touch " + asd)
-                    # print("DONE: ", os.path.join(input_dir, folder, file))
-                else:
-                    errors += 1
-                    packages_no_added.add(package_name + "." + folder.replace("-", "_"))
+    files=[]
+    for r, d, f in os.walk(input_dir):
+        for file in f:
+            if ".proto" in file.lower():
+                files.append(os.path.join(r, file))
+    for f in files:
+        file_name = f.split(os.path.sep)[-1]
+        folder = f.replace(file_name,"").replace(input_dir + os.path.sep, "")
+        command = "python3 -m grpc_tools.protoc -I. \
+                                 --proto_path=" + input_dir + " \
+                                 --python_out=" + os.path.join(output_dir, package_name) + " \
+                                 --grpc_python_out=" + os.path.join(output_dir, package_name) + " \
+                                " + f
+        os.system("touch __init__.py")
+        out = os.system(command)
+        if out == 0:
+            packages.append(folder.replace(os.path.sep, ".").replace("-", "_"))
+            asd = os.path.join(output_dir, package_name, folder.replace("-", "_"),
+                               "__init__.py")
+            os.system("touch " + asd)
+            # print("DONE: ", os.path.join(input_dir, folder, file))
+        else:
+            errors += 1
+            packages_no_added.add(folder.replace("-", "_"))
     with open(os.path.join(output_dir, package_name, "setup.py"), "+w") as setup:
         setup.write("""
 from setuptools import setup

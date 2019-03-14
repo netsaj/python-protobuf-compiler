@@ -15,7 +15,6 @@ def preparing_output(proto_output_dir, proto_package_name):
     if os.path.exists(os.path.join(output_dir, proto_package_name)):
         shutil.rmtree(os.path.join(output_dir, proto_package_name))
     os.mkdir(os.path.join(output_dir, proto_package_name))
-    os.mkdir(os.path.join(output_dir, proto_package_name, proto_package_name))
-    asd = os.path.join(output_dir, proto_package_name, proto_package_name, "__init__.py")
+    asd = os.path.join(output_dir, proto_package_name, "__init__.py")
     os.system("touch " + asd)
     return str(output_dir)
