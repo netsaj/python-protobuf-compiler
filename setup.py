@@ -24,7 +24,7 @@ setup(
         "Programming Language :: Python :: 3.6",
     ],
     install_requires=[
-        'grpcio==1.38.0',
+        'grpcio==1.53.0',
         'grpcio-tools==1.38.0',
         'colorama==0.3.3',
         'termcolor==1.1.0',
